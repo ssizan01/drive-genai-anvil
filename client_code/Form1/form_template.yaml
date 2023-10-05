@@ -25,6 +25,10 @@ components:
     properties: {}
     name: label_results
     layout_properties: {grid_position: 'JHWDRD,OEIMLM'}
+  - type: DropDown
+    properties: {}
+    name: dropdown_files
+    layout_properties: {grid_position: 'PDFTBR,UKVSJQ'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

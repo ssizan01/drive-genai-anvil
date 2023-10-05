@@ -28,17 +28,17 @@ class Form1(Form1Template):
   def text_box_1_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
       
-      # Get the search query from the text box
+    # Get the search query from the text box
       query = self.text_box_1.text  
       
       # Call the server function to search for files
       results = anvil.server.call('search_files', query)
       
-      # Check if there are results and display them
-      if results:
-          self.label_results.text = "\n".join(results)
-      else:
-          self.label_results.text = "No files found."
+      # Clear the current items in the dropdown
+      self.dropdown_files.items = []
+      
+      # Populate the dropdown with the file names as display values and file IDs as data values
+      self.dropdown_files.items = [(file_name, file_id) for file_name, file_id in results]
 
 
 
