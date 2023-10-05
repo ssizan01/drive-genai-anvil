@@ -13,7 +13,9 @@ class Form1(Form1Template):
 
   def button_1_click(self, **event_args):
 
-    
-    email_addr = anvil.google.auth.login()
-    print(f"User logged in as {email_addr}")
+    try:
+      anvil.google.drive.login()
+      print("User logged in to Google Drive successfully!")
+    except Exception as e:
+      print(f"Login failed: {e}")
 
