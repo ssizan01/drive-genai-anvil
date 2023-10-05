@@ -14,4 +14,5 @@ name: drive-genai-anvil
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {logo_img: 'asset:Logo-Google-Cloud.jpg'}
 startup_form: Form1
+uplink_visible: true
 renamed: true

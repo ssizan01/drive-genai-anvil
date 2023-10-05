@@ -1,8 +1,10 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.server
 import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 import anvil.google.auth
+import anvil.google.drive
 
 class Form1(Form1Template):
   def __init__(self, **properties):
@@ -13,9 +15,12 @@ class Form1(Form1Template):
 
   def button_1_click(self, **event_args):
 
+    # This method is called when the button is clicked
     try:
-      anvil.google.drive.login()
-      print("User logged in to Google Drive successfully!")
+        anvil.google.drive.login()
+        anvil.server.call('get_user_files')
+
     except Exception as e:
-      print(f"Login failed: {e}")
+        print(f"Error: {e}")
+
 
