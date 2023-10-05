@@ -40,6 +40,12 @@ class Form1(Form1Template):
       # Populate the dropdown with the file names as display values and file IDs as data values
       self.dropdown_files.items = [(file_name, file_id) for file_name, file_id in results]
 
+  def extract_file_content_click(self, **event_args):
+    selected_file_id = self.dropdown_files.selected_value
+    file_content = anvil.server.call('get_file_content', selected_file_id)
+    print(file_content)
+
+
 
 
 
