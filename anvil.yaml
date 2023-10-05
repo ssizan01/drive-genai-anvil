@@ -6,7 +6,8 @@ services:
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {client_id: 1054468015495-as8fnatm6hpem5dpd7cgvijkcad5d6gq.apps.googleusercontent.com,
-    client_secret_enc: 2uAceSmtluxyiyrvXpCMbIfIzK/btv7zb59qZ7/eRYDS0m10R13eS/vlpsOyxV+nlaHNlUT03+Whwo32Jt3RT0d+zorYXp5SofTJ5tC2OwiUB1jkc6hEW0PyasqK1IRZwwJkX1Fgj43KXvAO/Qv1UxGT2Zcen4jBCS1UMoiWwtYxcOj7+LOKvkg6nDW75x9J96y/pTJQVvPU3S3bbA==}
+    client_secret_enc: 2uAceSmtluxyiyrvXpCMbIfIzK/btv7zb59qZ7/eRYDS0m10R13eS/vlpsOyxV+nlaHNlUT03+Whwo32Jt3RT0d+zorYXp5SofTJ5tC2OwiUB1jkc6hEW0PyasqK1IRZwwJkX1Fgj43KXvAO/Qv1UxGT2Zcen4jBCS1UMoiWwtYxcOj7+LOKvkg6nDW75x9J96y/pTJQVvPU3S3bbA==,
+    app_origin_redirect: false}
 package_name: drive_genai_anvil
 allow_embedding: false
 name: drive-genai-anvil
