@@ -1,8 +1,16 @@
+dependencies: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {client_id: 1054468015495-as8fnatm6hpem5dpd7cgvijkcad5d6gq.apps.googleusercontent.com,
+    client_secret_enc: 2uAceSmtluxyiyrvXpCMbIfIzK/btv7zb59qZ7/eRYDS0m10R13eS/vlpsOyxV+nlaHNlUT03+Whwo32Jt3RT0d+zorYXp5SofTJ5tC2OwiUB1jkc6hEW0PyasqK1IRZwwJkX1Fgj43KXvAO/Qv1UxGT2Zcen4jBCS1UMoiWwtYxcOj7+LOKvkg6nDW75x9J96y/pTJQVvPU3S3bbA==}
+package_name: drive_genai_anvil
 allow_embedding: false
-package_name: M3_App_1
-name: M3 App 1
+name: drive-genai-anvil
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {logo_img: 'asset:Logo-Google-Cloud.jpg'}
 startup_form: Form1
 renamed: true
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-dependencies: []
-services: []
