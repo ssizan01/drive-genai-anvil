@@ -16,10 +16,15 @@ components:
     name: button_1
     layout_properties: {grid_position: 'FXHVGW,VICFBD'}
     event_bindings: {click: button_1_click}
-  - type: RepeatingPanel
-    properties: {item_template: Form1.ItemTemplate1}
-    name: repeating_panel_1
-    layout_properties: {grid_position: 'XEGBPJ,KSNDYO'}
+  - type: TextBox
+    properties: {}
+    name: text_box_1
+    layout_properties: {grid_position: 'GULDOF,DTWOEN'}
+    event_bindings: {pressed_enter: text_box_1_pressed_enter}
+  - type: Label
+    properties: {}
+    name: label_results
+    layout_properties: {grid_position: 'JHWDRD,OEIMLM'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

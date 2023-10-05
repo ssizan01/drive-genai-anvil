@@ -18,9 +18,28 @@ class Form1(Form1Template):
     # This method is called when the button is clicked
     try:
         anvil.google.drive.login()
-        anvil.server.call('get_user_files')
-
+        # Hide the login button after successful login
+        self.button_1.visible = False
+        # Optionally, you can notify the user that they've logged in successfully
+        # self.label_status.text = "Logged in successfully!"
     except Exception as e:
         print(f"Error: {e}")
+
+  def text_box_1_pressed_enter(self, **event_args):
+      """This method is called when the user presses Enter in this text box"""
+      
+      # Get the search query from the text box
+      query = self.text_box_1.text  
+      
+      # Call the server function to search for files
+      results = anvil.server.call('search_files', query)
+      
+      # Check if there are results and display them
+      if results:
+          self.label_results.text = "\n".join(results)
+      else:
+          self.label_results.text = "No files found."
+
+
 
 
