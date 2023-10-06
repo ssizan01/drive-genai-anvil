@@ -17,7 +17,7 @@ class Form1(Form1Template):
 
     # This method is called when the button is clicked
     try:
-        anvil.google.drive.login()
+        
         # Hide the login button after successful login
         self.button_1.visible = False
         # Optionally, you can notify the user that they've logged in successfully
@@ -51,6 +51,16 @@ class Form1(Form1Template):
       
       # Set the content of the file to the text box
       self.llm_output.text = file_content
+
+  def user_query_pressed_enter(self, **event_args):
+      selected_file_id = self.dropdown_files.selected_value
+      user_query= self.user_query.text
+      file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
+  
+      
+      # Set the content of the file to the text box
+      self.llm_output.text = file_content
+
 
 
 
