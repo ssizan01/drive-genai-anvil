@@ -16,7 +16,7 @@ class LoginForm(LoginFormTemplate):
     """This method is called when the button is clicked"""
 
     try:
-        anvil.google.auth.login()
+        anvil.google.drive.login()
         # Redirect to the main form after successful login
         open_form('Form1')
     except Exception as e:
