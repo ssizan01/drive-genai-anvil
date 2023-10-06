@@ -9,7 +9,7 @@ components:
   layout_properties: {slot: default}
   components:
   - name: label_1
-    properties: {text: 'Search for your google drive files here:', role: headline}
+    properties: {text: 'Search a filename in Google Drive:', role: headline}
     type: Label
     layout_properties: {grid_position: 'TJHOYA,QNLUTF'}
   - type: TextBox
@@ -19,7 +19,7 @@ components:
     event_bindings: {pressed_enter: text_box_1_pressed_enter}
   - name: label_2
     properties: {text: 'Pick your document to set as context for GenAI in the dropdown
-        below:', role: input-prompt}
+        below(only google docs work currently):', role: input-prompt}
     type: Label
     layout_properties: {grid_position: 'SJGESI,NKRZDB'}
   - type: DropDown
