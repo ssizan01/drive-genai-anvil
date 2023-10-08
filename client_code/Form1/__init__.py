@@ -13,6 +13,7 @@ class Form1(Form1Template):
 
     # Any code you write here will run before the form opens.
 
+
   def button_1_click(self, **event_args):
 
     # This method is called when the button is clicked
@@ -55,11 +56,15 @@ class Form1(Form1Template):
   def user_query_pressed_enter(self, **event_args):
       selected_file_id = self.dropdown_files.selected_value
       user_query= self.user_query.text
-      file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
+      #file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
   
-      
+      predictions = anvil.server.call('get_file_content', selected_file_id, user_query)
+
+      for prediction in predictions:
+        self.llm_output.text += prediction
       # Set the content of the file to the text box
-      self.llm_output.text = file_content
+      #self.llm_output.text = predictions
+
 
 
 
