@@ -47,12 +47,13 @@ components:
     name: extract_file_content
     layout_properties: {grid_position: 'BNPIDQ,KFTVMG'}
     event_bindings: {click: extract_file_content_click}
-  - name: repeating_panel_1
-    properties: {item_template: Form1.ItemTemplate1, role: null, background: 'theme:Error'}
-    type: RepeatingPanel
-    layout_properties: {grid_position: 'VVWOLC,WHYOEA'}
-    data_bindings:
-    - {property: foreground, code: '', writeback: false}
+  - type: RepeatingPanel
+    properties: {role: elevated-card, tooltip: '', border: '', foreground: '', items: null,
+      visible: true, spacing_above: small, spacing_below: small, item_template: Form1.ItemTemplate1,
+      background: ''}
+    name: repeating_panel_1
+    layout_properties: {grid_position: 'EIKEDP,RXKZJY'}
+    data_bindings: []
 - type: FlowPanel
   properties: {}
   name: navbar_links
