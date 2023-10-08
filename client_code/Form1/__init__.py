@@ -11,6 +11,12 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
+    if anvil.google.auth.get_user_access_token():
+      user_info = anvil.google.auth.get_user_email()
+      print( f'{user_info} is logged in')
+    else:
+        print('None')
+
     # Any code you write here will run before the form opens.
     
 
