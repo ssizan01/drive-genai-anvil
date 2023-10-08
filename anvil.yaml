@@ -16,5 +16,6 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-full,
 metadata: {logo_img: 'asset:SRTT Logo Merchology.png', title: Drive GenAI Experimental,
   description: Ask question of off your google drive documents.}
 startup_form: null
+db_schema: {}
 uplink_visible: true
 renamed: true
