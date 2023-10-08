@@ -12,7 +12,7 @@ class Form1(Form1Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-
+    print(anvil.users.get_user())
 
   def button_1_click(self, **event_args):
 
