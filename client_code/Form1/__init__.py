@@ -59,11 +59,12 @@ class Form1(Form1Template):
       user_query= self.user_query.text
       print(f"User Query: {user_query}")
   
-      file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
-      print(f"File Content Received: {file_content}")
+      #anvil.server.call('get_file_content', selected_file_id, user_query)
+      anvil.server.call('test_function')
+      #print(f"File Content Received: {self.llm_output.text}")
   
       # Set the content of the file to the text box
-      self.llm_output.text = file_content
+       
 
   def user_query_pressed_enter(self, **event_args):
       selected_file_id = self.dropdown_files.selected_value
