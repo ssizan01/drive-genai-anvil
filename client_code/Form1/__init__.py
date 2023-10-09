@@ -69,8 +69,8 @@ class Form1(Form1Template):
       #self.llm_output.text = file_content
     
 
-      sentences = anvil.server.call('get_file_content', file_id, user_query)
-      self.repeating_panel_1.items = sentences
+      anvil.server.call('get_file_content', selected_file_id, user_query)
+      #self.repeating_panel_1.items = sentences
 
 
 
