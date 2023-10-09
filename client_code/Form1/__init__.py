@@ -58,11 +58,12 @@ class Form1(Form1Template):
   
       user_query= self.user_query.text
       print(f"User Query: {user_query}")
-  
+
+      #self.llm_output.text = anvil.server.call('ping')
       self.llm_output.text = anvil.server.call('get_file_content', selected_file_id, user_query)
-      with anvil.server.no_loading_indicator:
-        self.task = anvil.server.call('get_file_content', selected_file_id, user_query)
-        print(self.task)
+      # with anvil.server.no_loading_indicator:
+      #   self.task = anvil.server.call('get_file_content', selected_file_id, user_query)
+      #   print(self.task)
       #anvil.server.call('test_function')
       #print(f"File Content Received: {self.llm_output.text}")
   
