@@ -15,22 +15,22 @@ class Form1(Form1Template):
       user_info = anvil.google.auth.get_user_email()
       print( f'{user_info} is logged in')
     else:
-        print('None')
+        print('No login information found')
 
     # Any code you write here will run before the form opens.
     
 
-  def button_1_click(self, **event_args):
+  # def button_1_click(self, **event_args):
 
-    # This method is called when the button is clicked
-    try:
+  #   # This method is called when the button is clicked
+  #   try:
         
-        # Hide the login button after successful login
-        self.button_1.visible = False
-        # Optionally, you can notify the user that they've logged in successfully
-        # self.label_status.text = "Logged in successfully!"
-    except Exception as e:
-        print(f"Error: {e}")
+  #       # Hide the login button after successful login
+  #       self.button_1.visible = False
+  #       # Optionally, you can notify the user that they've logged in successfully
+  #       # self.label_status.text = "Logged in successfully!"
+  #   except Exception as e:
+  #       print(f"Error: {e}")
 
   def text_box_1_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
@@ -51,11 +51,17 @@ class Form1(Form1Template):
 
 
   def extract_file_content_click(self, **event_args):
-      selected_file_id = self.dropdown_files.selected_value
-      user_query= self.user_query.text
-      file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
+      print("extract_file_content_click triggered!")
   
-      
+      selected_file_id = self.dropdown_files.selected_value
+      print(f"Selected File ID: {selected_file_id}")
+  
+      user_query= self.user_query.text
+      print(f"User Query: {user_query}")
+  
+      file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
+      print(f"File Content Received: {file_content}")
+  
       # Set the content of the file to the text box
       self.llm_output.text = file_content
 
