@@ -94,7 +94,7 @@ class Form1(Form1Template):
     user_query= self.user_query.text
     print(f"User Query: {user_query}")
 
-    self.llm_output.text = anvil.server.call('get_file_content', selected_file_id, user_query)
+    self.llm_output.text = anvil.server.call('get_file_content')
 
 
 
