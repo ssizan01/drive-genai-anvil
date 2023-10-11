@@ -10,13 +10,27 @@ class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.timer_1.interval = None
+
     if anvil.google.auth.get_user_access_token():
-      self.user_email = anvil.google.auth.get_user_email()
-      print( f'{self.user_email} is logged in')
+      user_info = anvil.google.auth.get_user_email()
+      print( f'{user_info} is logged in')
     else:
         print('No login information found')
 
+    # Any code you write here will run before the form opens.
+    
+
+  # def button_1_click(self, **event_args):
+
+  #   # This method is called when the button is clicked
+  #   try:
+        
+  #       # Hide the login button after successful login
+  #       self.button_1.visible = False
+  #       # Optionally, you can notify the user that they've logged in successfully
+  #       # self.label_status.text = "Logged in successfully!"
+  #   except Exception as e:
+  #       print(f"Error: {e}")
 
   def text_box_1_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
@@ -37,36 +51,50 @@ class Form1(Form1Template):
 
 
   def extract_file_content_click(self, **event_args):
-    selected_file_id = self.dropdown_files.selected_value
-    print(f"Selected File ID: {selected_file_id}")
-
-    user_query= self.user_query.text
-    print(f"User Query: {user_query}")
-    anvil.server.call('get_file_content', selected_file_id, user_query)
-    self.timer_1.interval = 2
-
-
-  def timer_1_tick(self, **event_args):
-      print('tick even triggered')
-      sentences = anvil.server.call('process_chunk', self.user_email, self.dropdown_files.selected_value, self.user_query.text)
+      print("extract_file_content_click triggered!")
   
-      if not sentences:
-          print('no sentences')  # Stop the timer if no more chunks are left
-      else:
-          # Assuming that repeating_panel_1 is displaying a list of sentences:
-          current_sentences = list(self.repeating_panel_1.items)
-          current_sentences.extend(sentences)
-          self.repeating_panel_1.items = current_sentences
+      selected_file_id = self.dropdown_files.selected_value
+      print(f"Selected File ID: {selected_file_id}")
+  
+      user_query= self.user_query.text
+      print(f"User Query: {user_query}")
 
-
-      
-
+      anvil.server.call('get_file_content', selected_file_id, user_query)
+      #self.llm_output.text = anvil.server.call('get_file_content', selected_file_id, user_query)
+      # with anvil.server.no_loading_indicator:
+      #   self.task = anvil.server.call('get_file_content', selected_file_id, user_query)
+      #   print(self.task)
+      #anvil.server.call('test_function')
+      #print(f"File Content Received: {self.llm_output.text}")
+  
+      # Set the content of the file to the text box
        
 
+  def user_query_pressed_enter(self, **event_args):
+      selected_file_id = self.dropdown_files.selected_value
+      user_query= self.user_query.text
+      
+  
+      #file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
+      
+      #self.llm_output.text = file_content
+    
 
+      anvil.server.call('get_file_content', selected_file_id, user_query)
+      #self.repeating_panel_1.items = sentences
 
+  def button_1_click(self, **event_args):
+    
+    """This method is called when the button is clicked"""
+    print("extract_file_content_click triggered!")
+  
+    selected_file_id = self.dropdown_files.selected_value
+    print(f"Selected File ID: {selected_file_id}")
+  
+    user_query= self.user_query.text
+    print(f"User Query: {user_query}")
 
-
+    self.llm_output.text = anvil.server.call('get_file_content')
 
 
 
