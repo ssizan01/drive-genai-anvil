@@ -59,8 +59,8 @@ class Form1(Form1Template):
       user_query= self.user_query.text
       print(f"User Query: {user_query}")
 
-      self.llm_output.text = anvil.server.call('ping')
-      #self.llm_output.text = anvil.server.call('get_file_content', selected_file_id, user_query)
+      #self.llm_output.text = anvil.server.call('ping')
+      self.llm_output.text = anvil.server.call('get_file_content', selected_file_id, user_query)
       # with anvil.server.no_loading_indicator:
       #   self.task = anvil.server.call('get_file_content', selected_file_id, user_query)
       #   print(self.task)
@@ -83,18 +83,7 @@ class Form1(Form1Template):
       anvil.server.call('get_file_content', selected_file_id, user_query)
       #self.repeating_panel_1.items = sentences
 
-  def button_1_click(self, **event_args):
-    
-    """This method is called when the button is clicked"""
-    print("extract_file_content_click triggered!")
-  
-    selected_file_id = self.dropdown_files.selected_value
-    print(f"Selected File ID: {selected_file_id}")
-  
-    user_query= self.user_query.text
-    print(f"User Query: {user_query}")
 
-    self.llm_output.text = anvil.server.call('get_file_content')
 
 
 

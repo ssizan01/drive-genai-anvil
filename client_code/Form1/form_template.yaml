@@ -47,11 +47,6 @@ components:
     name: extract_file_content
     layout_properties: {grid_position: 'BNPIDQ,KFTVMG'}
     event_bindings: {click: extract_file_content_click}
-  - type: Button
-    properties: {text: button_1}
-    name: button_1
-    layout_properties: {grid_position: 'BNPIDQ,EVLEKU'}
-    event_bindings: {click: button_1_click}
 - type: FlowPanel
   properties: {}
   name: navbar_links
