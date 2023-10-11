@@ -75,8 +75,13 @@ class Form1(Form1Template):
     user_query= self.user_query.text
     print(f"User Query: {user_query}")
 
-    self.llm_output.text = anvil.server.call('answer_with_llm', selected_file_id,user_query)
+    try:
+      self.llm_output.text = anvil.server.call('answer_with_llm', selected_file_id,user_query)
 
+
+    except Exception as e:  # This will catch any other exceptions
+      self.llm_output.text =  f"Please index your document first"
+      print(f"An error occurred: {e}")
        
 
 
