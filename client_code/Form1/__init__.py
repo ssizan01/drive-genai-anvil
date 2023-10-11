@@ -56,11 +56,10 @@ class Form1(Form1Template):
       selected_file_id = self.dropdown_files.selected_value
       print(f"Selected File ID: {selected_file_id}")
   
-      user_query= self.user_query.text
-      print(f"User Query: {user_query}")
+     
 
-      anvil.server.call('get_file_content', selected_file_id, user_query)
-      #self.llm_output.text = anvil.server.call('get_file_content', selected_file_id, user_query)
+      
+      self.indexing_output.text = anvil.server.call('get_doc_embeddings', selected_file_id)
       # with anvil.server.no_loading_indicator:
       #   self.task = anvil.server.call('get_file_content', selected_file_id, user_query)
       #   print(self.task)
@@ -68,33 +67,18 @@ class Form1(Form1Template):
       #print(f"File Content Received: {self.llm_output.text}")
   
       # Set the content of the file to the text box
-       
 
   def user_query_pressed_enter(self, **event_args):
-      selected_file_id = self.dropdown_files.selected_value
-      user_query= self.user_query.text
-      
-  
-      #file_content = anvil.server.call('get_file_content', selected_file_id, user_query)
-      
-      #self.llm_output.text = file_content
-    
-
-      anvil.server.call('get_file_content', selected_file_id, user_query)
-      #self.repeating_panel_1.items = sentences
-
-  def button_1_click(self, **event_args):
-    
-    """This method is called when the button is clicked"""
-    print("extract_file_content_click triggered!")
-  
+    """This method is called when the user presses Enter in this text box"""
     selected_file_id = self.dropdown_files.selected_value
-    print(f"Selected File ID: {selected_file_id}")
-  
+
     user_query= self.user_query.text
     print(f"User Query: {user_query}")
 
-    self.llm_output.text = anvil.server.call('get_file_content')
+    self.llm_output.text = anvil.server.call('answer_with_llm', selected_file_id,user_query)
+
+       
+
 
 
 

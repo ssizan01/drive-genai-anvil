@@ -26,23 +26,34 @@ components:
     properties: {}
     name: dropdown_files
     layout_properties: {grid_position: 'PDFTBR,UKVSJQ'}
-  - name: label_3
-    properties: {text: 'Ask your question of off your document below:', role: input-prompt}
-    type: Label
-    layout_properties: {grid_position: 'WRCTJU,DBOJMS'}
-  - type: TextBox
-    properties: {}
-    name: user_query
-    layout_properties: {grid_position: 'IJQLYF,YOOPDN'}
-    event_bindings: {}
   - type: Button
     properties: {role: tonal-button, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Submit, font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
+      foreground: '', visible: true, text: Index your document, font_size: null, font: '',
+      spacing_above: small, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
     name: extract_file_content
     layout_properties: {grid_position: 'BNPIDQ,KFTVMG'}
     event_bindings: {click: extract_file_content_click}
+  - type: Label
+    properties: {}
+    name: indexing_output
+    layout_properties: {grid_position: 'HNMJTV,YRLNGL'}
+  - type: Label
+    properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Ask a question, font_size: null, font: '', spacing_above: small,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: label_4
+    layout_properties: {grid_position: 'KKGCXS,SPWLJA'}
+  - type: TextBox
+    properties: {}
+    name: user_query
+    layout_properties: {grid_position: 'SYKTTZ,ZWAFBY', slot: title}
+    event_bindings: {pressed_enter: user_query_pressed_enter}
+  - type: Label
+    properties: {}
+    name: llm_output
+    layout_properties: {grid_position: 'NBJXOF,WDZYOT'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
