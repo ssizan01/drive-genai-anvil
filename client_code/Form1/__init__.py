@@ -17,20 +17,6 @@ class Form1(Form1Template):
     else:
         print('No login information found')
 
-    # Any code you write here will run before the form opens.
-    
-
-  # def button_1_click(self, **event_args):
-
-  #   # This method is called when the button is clicked
-  #   try:
-        
-  #       # Hide the login button after successful login
-  #       self.button_1.visible = False
-  #       # Optionally, you can notify the user that they've logged in successfully
-  #       # self.label_status.text = "Logged in successfully!"
-  #   except Exception as e:
-  #       print(f"Error: {e}")
 
   def text_box_1_pressed_enter(self, **event_args):
       """This method is called when the user presses Enter in this text box"""
@@ -55,18 +41,9 @@ class Form1(Form1Template):
   
       selected_file_id = self.dropdown_files.selected_value
       print(f"Selected File ID: {selected_file_id}")
-  
-     
 
-      
       self.indexing_output.text = anvil.server.call('get_doc_embeddings', selected_file_id)
-      # with anvil.server.no_loading_indicator:
-      #   self.task = anvil.server.call('get_file_content', selected_file_id, user_query)
-      #   print(self.task)
-      #anvil.server.call('test_function')
-      #print(f"File Content Received: {self.llm_output.text}")
-  
-      # Set the content of the file to the text box
+
 
   def user_query_pressed_enter(self, **event_args):
     """This method is called when the user presses Enter in this text box"""
@@ -74,9 +51,10 @@ class Form1(Form1Template):
 
     user_query= self.user_query.text
     print(f"User Query: {user_query}")
+    print(f"max results being used is {self.max_results.text}")
 
     try:
-      self.llm_output.text = anvil.server.call('answer_with_llm', selected_file_id,user_query)
+      self.llm_output.text = anvil.server.call('answer_with_llm', selected_file_id,user_query,int(self.max_results.text))
 
 
     except Exception as e:  # This will catch any other exceptions
