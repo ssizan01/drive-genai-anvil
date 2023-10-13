@@ -47,6 +47,10 @@ class Form1(Form1Template):
     user_query= self.user_query.text
     print(f"User Query: {user_query}")
     print(f"max results being used is {self.max_results.text}")
+    urls = self.text_box_1.text
+    print(urls)
+    pattern = r'https://docs\.google\.com/document/d/([a-zA-Z0-9_-]+)/edit'
+    self.file_ids = re.findall(pattern, urls)
 
     try:
       self.llm_output.text = anvil.server.call('answer_with_llm', self.file_ids, user_query,int(self.max_results.text))
