@@ -34,7 +34,7 @@ components:
     layout_properties: {grid_position: 'HNMJTV,YRLNGL'}
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: 'Type a Question and press Enter:', font_size: null, font: '',
+      visible: true, text: 'Type a Question and press Enter: ', font_size: null, font: '',
       spacing_above: small, icon_align: left, spacing_below: small, italic: false,
       background: '', bold: false, underline: false, icon: ''}
     name: label_4
@@ -47,7 +47,7 @@ components:
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: 'In the following text-box, you can dictate how many relevant
-        sentences to fetch as context for the LLM. Reasonable numbers are 1-10:',
+        paragraphs to fetch as context for the LLM. Reasonable numbers are 1-10:',
       font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small,
       italic: true, background: '', bold: false, underline: false, icon: ''}
     name: label_3
