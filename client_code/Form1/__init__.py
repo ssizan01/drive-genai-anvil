@@ -5,6 +5,7 @@ import anvil.google.auth, anvil.google.drive
 from anvil.google.drive import app_files
 import anvil.google.auth
 import anvil.google.drive
+import re
 
 class Form1(Form1Template):
   def __init__(self, **properties):
@@ -18,43 +19,37 @@ class Form1(Form1Template):
         print('No login information found')
 
 
-  def text_box_1_pressed_enter(self, **event_args):
-      """This method is called when the user presses Enter in this text box"""
-      
-    # Get the search query from the text box
-      query = self.text_box_1.text  
-      
-      # Call the server function to search for files
-      results = anvil.server.call('search_files', query)
-      
-      # Clear the current items in the dropdown
-      self.dropdown_files.items = []
-      
-      # Populate the dropdown with the file names as display values and file IDs as data values
-      self.dropdown_files.items = [(file_name, file_id) for file_name, file_id in results]
-
-
-
+  # def text_box_1_pressed_enter(self, **event_args):
+  #     """This method is called when the user presses Enter in this text box"""
+  
+  #     # Get the search query from the text box
+  #     urls = self.text_box_1.text
+  #     print(urls)
+  #     pattern = r'https://docs\.google\.com/document/d/([a-zA-Z0-9_-]+)/edit'
+  #     self.file_ids = re.findall(pattern, urls)
+  #     print(f'file IDs are {self.file_ids}')
 
   def extract_file_content_click(self, **event_args):
       print("extract_file_content_click triggered!")
-  
-      selected_file_id = self.dropdown_files.selected_value
-      print(f"Selected File ID: {selected_file_id}")
-
-      self.indexing_output.text = anvil.server.call('get_doc_embeddings', selected_file_id)
+      urls = self.text_box_1.text
+      print(urls)
+      pattern = r'https://docs\.google\.com/document/d/([a-zA-Z0-9_-]+)/edit'
+      self.file_ids = re.findall(pattern, urls)
+      print(f'file IDs are {self.file_ids}')
+    
+      self.indexing_output.text = anvil.server.call('get_doc_embeddings', self.file_ids)
 
 
   def user_query_pressed_enter(self, **event_args):
     """This method is called when the user presses Enter in this text box"""
-    selected_file_id = self.dropdown_files.selected_value
+
 
     user_query= self.user_query.text
     print(f"User Query: {user_query}")
     print(f"max results being used is {self.max_results.text}")
 
     try:
-      self.llm_output.text = anvil.server.call('answer_with_llm', selected_file_id,user_query,int(self.max_results.text))
+      self.llm_output.text = anvil.server.call('answer_with_llm', self.file_ids, user_query,int(self.max_results.text))
 
 
     except Exception as e:  # This will catch any other exceptions
